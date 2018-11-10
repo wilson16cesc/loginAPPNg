@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NoticiasService } from '../../servicios/noticias.service';
 
 @Component({
   selector: 'app-privado-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivadoPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(noticias: NoticiasService) { 
+       noticias.getNews().subscribe(val => console.log(val));
+  }
 
   ngOnInit() {
   }

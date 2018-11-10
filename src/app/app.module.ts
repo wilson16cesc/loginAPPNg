@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from "@angular/http";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './componentes/home-page/home-page.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
@@ -22,6 +24,7 @@ import {environment} from '../environments/environment';
 
 import { AuthService } from './servicios/auth.service';
 import {AuthGuard} from './guards/auth.guard';
+import { NoticiasService } from './servicios/noticias.service';
 
 @NgModule({
   declarations: [
@@ -39,9 +42,11 @@ import {AuthGuard} from './guards/auth.guard';
     FormsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    FlashMessagesModule
+    FlashMessagesModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, FlashMessagesService],
+  providers: [AuthService, AuthGuard, FlashMessagesService, HttpClientModule, NoticiasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
