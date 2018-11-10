@@ -8,8 +8,15 @@ import { NoticiasService } from '../../servicios/noticias.service';
 })
 export class PrivadoPageComponent implements OnInit {
 
+  servicio: any;
+  noticias: any[];
+  isImg : boolean;
   constructor(noticias: NoticiasService) { 
-       noticias.getNews().subscribe(val => console.log(val));
+       noticias.getNews().subscribe(val => {
+        this.servicio = val;
+        this.noticias = this.servicio.articles;
+        console.log(this.noticias);
+       });
   }
 
   ngOnInit() {

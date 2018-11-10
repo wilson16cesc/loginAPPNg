@@ -1,9 +1,17 @@
 <div class="jumbotron mt-3">
   <h1 class="display-3">ZONA PRIVADA!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
+  <p class="lead">Esta es la zona para ver las noticias</p>
+  <ul class="card-columns">
+      <div class="card" *ngFor="let noticia of noticias">
+      
+        <img *ngIf="noticia.urlToImage" class="card-img-top" src="{{noticia.urlToImage}}  "  alt="Card image cap">
+        <img *ngIf="!noticia.urlToImage"  class="card-img-top" src="https://www.escaramuza.com.uy/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg">
+        <div class="card-body">
+          <h5 class="card-title">{{noticia.title}}</h5>
+          <p class="card-text">{{noticia.content}}</p>
+          <a href="{{noticia.url}}" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+  
+  </ul>
 </div>
